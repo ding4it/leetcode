@@ -11,11 +11,11 @@
 
 class Solution(object):
     def generate(self,board,x,y,n,m):
-        rs = 0
+        rs = - (board[x][y] & 1)
         for i in range( max(x-1,0), min(x+2,n) ):
             for j in range( max(y-1,0),min(y+2,m) ):
                 rs += board[i][j]&1
-        return rs - board[x][y] & 1
+        return rs
 
     def gameOfLife(self, board):
         """
@@ -41,7 +41,6 @@ class Solution(object):
                     board[i][j] = 3
                 elif alive == 3:
                     board[i][j] = board[i][j] | 2
-                print(i,j,alive,board[i][j])
 
         print(board)
         for i in range(n):
